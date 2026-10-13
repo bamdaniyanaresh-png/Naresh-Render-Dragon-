@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+build/_lazurite/
+build/material/*.material.bin
+build/renderer/
+assets/base-materials/*
+!assets/base-materials/README.md
+build/.work/
+build/android/
+build/windows/
+build/ios/
+build/merged/
+tool/data/

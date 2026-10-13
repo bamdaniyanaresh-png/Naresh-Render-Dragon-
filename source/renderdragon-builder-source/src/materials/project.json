@@ -1,0 +1,48 @@
+{
+  "base_profile": {
+    "platforms": [
+      "ESSL_310"
+    ],
+    "merge_source": [
+      "../../assets/base-materials/"
+    ],
+    "include_patterns": [
+      "*"
+    ],
+    "exclude_patterns": [
+      ".*",
+      "_*"
+    ],
+    "include_search_paths": [
+      "../../include"
+    ]
+  },
+  "profiles": {
+    "android": {
+      "macros": [],
+      "platforms": [
+        "ESSL_310"
+      ]
+    },
+    "windows": {
+      "macros": [],
+      "platforms": [
+        "Direct3D_SM50"
+      ]
+    },
+    "ios": {
+      "macros": [],
+      "platforms": [
+        "Metal"
+      ]
+    },
+    "merged": {
+      "macros": [],
+      "platforms": [
+        "ESSL_310",
+        "Direct3D_SM50",
+        "Metal"
+      ]
+    }
+  }
+}

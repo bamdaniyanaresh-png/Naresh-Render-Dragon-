@@ -1,0 +1,20 @@
+Copyright Information
+=====================
+
+Project:
+Naresh RenderDragon Builder
+
+Copyright:
+Copyright (c) 2026 Naresh
+
+License:
+MIT License
+
+The project's original builder and renderer-interface code is licensed under
+the MIT License. Third-party components retain their own licenses; see
+THIRD_PARTY_NOTICES.md.
+
+Minecraft and RenderDragon materials, textures, and other game data remain the
+property of their respective rights holders and are not covered by the
+project's MIT license. This project is not affiliated with Mojang Studios or
+Microsoft.

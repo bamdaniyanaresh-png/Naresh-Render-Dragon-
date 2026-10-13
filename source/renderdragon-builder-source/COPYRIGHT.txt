@@ -1,0 +1,12 @@
+Naresh RenderDragon Builder
+Copyright (c) 2026 Naresh
+
+This project's original builder and renderer-interface code is licensed under
+the MIT License. See LICENSE.
+
+Third-party code and tools retain their own copyright and license terms.
+See THIRD_PARTY_NOTICES.md. The BGFX shader include retains its upstream
+copyright and license header.
+
+Minecraft and RenderDragon material data remain the property of their
+respective rights holders and are not covered by this project's MIT license.
