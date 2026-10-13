@@ -1,0 +1,23 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Naresh Render Dragon Shader",
+    "description": "RenderDragon Shader Resource Pack by Naresh Gaming",
+    "uuid": "a3e9b6d1-7c42-4f85-9a16-2d8b5e0c7143",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 26, 51]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "b7c2f841-5d93-4a6e-8f10-3c9d2e7a6145",
+      "version": [1, 0, 0]
+    }
+  ],
+  "metadata": {
+    "authors": [
+      "Naresh Gaming"
+    ],
+    "license": "All Rights Reserved"
+  }
+}
