@@ -2,6 +2,12 @@ Naresh RenderDragon Builder
 
 Independent Lazurite-based RenderDragon material builder.
 
+This repository can build the Minecraft Bedrock render dragon shader in different ways and to run this repository, basematerial.bins must be present in the basematerial folder
+
+How does this repository work?
+
+This repository first uses materials.bins from the base-materials folder, takes this base materials.bin, injects source code into it, and creates a new materials.bin in the builds folder
+
 Project Status: Work in Progress
 
 This repository is currently under active development and is not yet fully complete. New features, improvements, bug fixes, and documentation may be added over time.
