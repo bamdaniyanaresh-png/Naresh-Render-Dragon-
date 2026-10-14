@@ -59,6 +59,48 @@ class MaterialInputTests(unittest.TestCase):
         self.assertIn("v_viewVector", info["vertex_outputs"])
         self.assertIn("v_viewVector", info["fragment_inputs"])
 
+    def test_renderchunk_shadow_is_project_local_and_configurable(self):
+        root = Path(__file__).resolve().parents[1]
+        header = root / "include" / "renderer" / "effects" / "player_shadow.h"
+        vertex = root / "src" / "materials" / "RenderChunk" / "vertex.sc"
+        fragment = root / "src" / "materials" / "RenderChunk" / "fragment.sc"
+
+        header_text = header.read_text(encoding="utf-8")
+        vertex_text = vertex.read_text(encoding="utf-8")
+        fragment_text = fragment.read_text(encoding="utf-8")
+
+        self.assertIn("rdPlayerShadowCoverage", header_text)
+        self.assertIn("rdPlayerShadowCoverage", fragment_text)
+        self.assertIn("RD_PLAYER_SHADOW_ENABLED", header_text)
+        self.assertIn("RD_PLAYER_SHADOW_TINT", header_text)
+        self.assertNotIn("NL_", header_text + vertex_text + fragment_text)
+        self.assertIn("v_shadowData", vertex_text)
+        self.assertIn("CameraPosition.xyz - LastCameraPosition.xyz", vertex_text)
+        self.assertIn("-v_viewVector", fragment_text)
+
+    def test_renderchunk_has_independent_surface_passes(self):
+        root = Path(__file__).resolve().parents[1]
+        folder = root / "src" / "materials" / "RenderChunk"
+        vertex = (folder / "vertex.sc").read_text(encoding="utf-8")
+        fragment = (folder / "fragment.sc").read_text(encoding="utf-8")
+        config = (folder / "config.json").read_text(encoding="utf-8")
+        style = (
+            root / "include" / "renderer" / "effects" / "surface_style.h"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("mtxFromCols", vertex)
+        self.assertIn("RENDER_AS_BILLBOARDS", vertex)
+        self.assertIn("ALPHA_TEST", fragment)
+        self.assertIn("DEPTH_ONLY", fragment)
+        self.assertIn("s_SeasonsTexture", fragment)
+        self.assertIn("rdEnvironmentLight", fragment)
+        self.assertIn("rdWaterWave", fragment)
+        self.assertIn("RD_WATER_REFLECTION", fragment)
+        self.assertIn("rdSoftColorGrade", fragment)
+        self.assertIn("RD_STYLE_DAY_TINT", style)
+        for engine_variant in ("Instancing", "RenderAsBillboards", "Seasons", "DepthOnly"):
+            self.assertIn(engine_variant, config)
+
     def test_material_specific_uniform_overrides_are_preserved(self):
         info = inspect_material("EndSky")
         self.assertEqual(

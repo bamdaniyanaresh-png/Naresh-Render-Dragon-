@@ -32,7 +32,7 @@ eligible to compile.
 | `v_texcoord0` | `vec2` | Interpolated material texture UV. |
 | `v_lightmapUV` | `vec2` | Decoded lightmap UV used to sample `s_LightMapTexture`. |
 | `v_fog` | `vec4` | Fog RGB in `.rgb`, fog blend amount in `.a`. |
-| `v_ditheringAndMaskTinting` | `vec2` | Reserved by this source; currently set to zero. |
+| `v_shadowData` | `vec2` | Renderer animation clock and horizontal camera travel, passed from vertex to fragment for the procedural shadow and surface animation. |
 
 Example fragment-stage use:
 
@@ -60,6 +60,17 @@ material. A material with its own `material.json` uses that explicit
 All of these names and values are version-sensitive. A compiler can check
 syntax, but only the target Minecraft version and loader can confirm that a
 builtin is actually bound and has the expected meaning.
+
+RenderChunk now maps the engine's instancing, billboard, seasons, depth, alpha,
+opaque, and transparent variants. Its independent surface pass adds a
+day/night lightmap tint, subtle tone shaping, animated vegetation/water
+approximations, and the optional player-shaped shadow. These are shader-side
+approximations; they do not add custom game uniforms.
+
+The player-shaped shadow uses the existing view-vector varying plus camera,
+time, and sun builtins. It does not add a custom player-position uniform; the
+camera-based anchor and movement are estimates documented in
+[`PLAYER_SHADOW.md`](PLAYER_SHADOW.md).
 
 ## What cannot be added by declaring a shader variable
 

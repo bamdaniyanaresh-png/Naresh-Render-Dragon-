@@ -18,8 +18,8 @@ def _check_lazurite():
         found = version("lazurite")
     except Exception as exc:
         raise RuntimeError("Lazurite is not installed. Run: python -m pip install -r requirements.txt") from exc
-    if found != "0.9.0":
-        raise RuntimeError(f"Lazurite 0.9.0 is required; found {found}.")
+    if found != "0.10.0":
+        raise RuntimeError(f"Lazurite 0.10.0 is required; found {found}.")
 
 
 def _check_rich():
